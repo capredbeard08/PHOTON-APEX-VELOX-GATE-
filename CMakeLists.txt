@@ -9,6 +9,7 @@ option(PHOTON_ENABLE_WARNINGS "Enable strict compiler warnings" ON)
 add_library(photon_core STATIC
   src/ouch5_gateway.cpp
   src/avx512_signal_engine.cpp
+  src/market_intelligence.cpp
 )
 target_include_directories(photon_core PUBLIC include)
 target_compile_options(photon_core PRIVATE -O3 -march=native)
@@ -25,5 +26,9 @@ target_link_libraries(photon_smoke PRIVATE photon_core)
 add_executable(photon_hotpath_bench tools/benchmark_hot_path.cpp)
 target_link_libraries(photon_hotpath_bench PRIVATE photon_core)
 
+add_executable(photon_market_intelligence_test tests/test_market_intelligence.cpp)
+target_link_libraries(photon_market_intelligence_test PRIVATE photon_core)
+
 enable_testing()
 add_test(NAME photon_smoke COMMAND photon_smoke)
+add_test(NAME photon_market_intelligence COMMAND photon_market_intelligence_test)
