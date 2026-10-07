@@ -150,7 +150,6 @@ TimeframeResult ScenarioEngine::simulate(const intel::MarketSnapshot& now,
   out.separation = out.winner_probability - second;
 
   // Re-simulate the winning path as a weighted continuation.
-  const auto& winning = out.scenarios[winner];
   float winner_weight = 0.0f;
   for (std::size_t i = 0; i < count; ++i) {
     const auto& c = nearest[i];
