@@ -2,17 +2,23 @@ name: photon-ci
 on:
   push:
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   cpp:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Configure
-        run: cmake -S . -B build -DPHOTON_ENABLE_AVX512=OFF
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DPHOTON_ENABLE_AVX512=OFF
       - name: Build
-        run: cmake --build build -j2
+        run: cmake --build build --parallel 2
       - name: Test
         run: ctest --test-dir build --output-on-failure
       - name: Benchmark build
-        run: cmake --build build --target photon_hotpath_bench -j2
+        run: cmake --build build --target photon_hotpath_bench --parallel 2
+      - name: Python syntax
+        run: python3 -m py_compile tools/analyze_hft_latency.py
