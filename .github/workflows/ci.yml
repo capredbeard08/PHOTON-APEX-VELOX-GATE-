@@ -18,6 +18,8 @@ jobs:
         run: cmake --build build --parallel 2
       - name: Test
         run: ctest --test-dir build --output-on-failure
+      - name: AVX-512 compile
+        run: cmake -S . -B build-avx512 -DCMAKE_BUILD_TYPE=Release -DPHOTON_ENABLE_AVX512=ON && cmake --build build-avx512 --parallel 2
       - name: Benchmark build
         run: cmake --build build --target photon_hotpath_bench --parallel 2
       - name: Python syntax
