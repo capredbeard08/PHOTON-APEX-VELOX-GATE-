@@ -38,9 +38,9 @@ int main() {
   assert(d.accept && !d.duplicate);
   d = arb.observe(photon::feed::Feed::B, 100);
   assert(!d.accept && d.duplicate);
-  d = arb.observe(photon::feed::B, 101);
+  d = arb.observe(photon::feed::Feed::B, 101);
   assert(d.accept && !d.duplicate);
-  d = arb.observe(photon::feed::A, 101);
+  d = arb.observe(photon::feed::Feed::A, 101);
   assert(!d.accept && d.duplicate);
   return 0;
 }
