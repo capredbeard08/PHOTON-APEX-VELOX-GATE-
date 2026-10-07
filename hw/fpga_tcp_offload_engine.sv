@@ -72,8 +72,8 @@ module fpga_tcp_offload_engine #(
   logic [31:0] tcp_sum;
 
   always_comb begin
-    ip_total_len = 16'(20 + 20 + payload_len_i);
-    tcp_total_len = 16'(20 + payload_len_i);
+    ip_total_len = 16'd40 + payload_len_i;
+    tcp_total_len = 16'd20 + payload_len_i;
 
     ip_sum = 32'h0000;
     ip_sum += 32'h4500;
