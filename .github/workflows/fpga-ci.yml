@@ -1,0 +1,17 @@
+name: photon-fpga-ci
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: SystemVerilog smoke
+        run: |
+          iverilog -g2012 -o risk_gate_tb hw/fpga_pre_trade_risk_gate.sv hw/tb_fpga_pre_trade_risk_gate.sv
+          vvp risk_gate_tb
+          iverilog -g2012 -o tcp_tb hw/fpga_tcp_offload_engine.sv hw/tb_fpga_tcp_offload_engine.sv
+          vvp tcp_tb
