@@ -4,8 +4,8 @@
 
 namespace photon::scenario {
 namespace {
-float distance(const MarketSnapshot& a,const MarketSnapshot& b) noexcept {
-  const auto fa=extract_features(a), fb=extract_features(b);
+float distance(const intel::MarketSnapshot& a,const intel::MarketSnapshot& b) noexcept {
+  const auto fa=intel::extract_features(a), fb=intel::extract_features(b);
   float d=0;
   d+=std::abs(fa.book_imbalance-fb.book_imbalance)*2.0f;
   d+=std::abs(fa.flow_imbalance-fb.flow_imbalance)*2.0f;
@@ -30,7 +30,7 @@ bool ScenarioEngine::ingest(const HistoricalSample& s) noexcept {
   return true;
 }
 
-TimeframeResult ScenarioEngine::simulate(const MarketSnapshot& now,std::uint32_t horizon) const noexcept {
+TimeframeResult ScenarioEngine::simulate(const intel::MarketSnapshot& now,std::uint32_t horizon) const noexcept {
   struct Candidate { float d; float r; };
   std::array<Candidate,kCapacity> nearest{};
   std::size_t n=0;
