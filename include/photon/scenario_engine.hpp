@@ -35,7 +35,7 @@ struct Consensus {
 };
 
 struct HistoricalSample {
-  MarketSnapshot state{};
+  intel::MarketSnapshot state{};
   float forward_return_bps{};
   std::uint32_t horizon_ms{};
 };
@@ -45,8 +45,8 @@ public:
   ScenarioEngine() noexcept;
   void reset() noexcept;
   bool ingest(const HistoricalSample&) noexcept;
-  TimeframeResult simulate(const MarketSnapshot&, std::uint32_t horizon_ms) const noexcept;
-  Consensus cross_validate(const MarketSnapshot&) const noexcept;
+  TimeframeResult simulate(const intel::MarketSnapshot&, std::uint32_t horizon_ms) const noexcept;
+  Consensus cross_validate(const intel::MarketSnapshot&) const noexcept;
 
 private:
   static constexpr std::size_t kCapacity = 65536;
