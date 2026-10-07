@@ -73,7 +73,7 @@ public:
   Consensus cross_validate(const intel::MarketSnapshot&) const noexcept;
 
 private:
-  static constexpr std::size_t kCapacity = 65536;
+  // Live process keeps a bounded analogue cache; the full 1s-1y archive belongs in the offline research store.\n  static constexpr std::size_t kCapacity = 8192;
   std::array<HistoricalSample,kCapacity> samples_{};
   std::uint32_t size_{};
   std::uint32_t cursor_{};
