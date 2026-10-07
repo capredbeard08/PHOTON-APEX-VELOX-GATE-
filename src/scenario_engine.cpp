@@ -1,7 +1,6 @@
 #include "photon/scenario_engine.hpp"
 #include <algorithm>
 #include <cmath>
-#include <limits>
 
 namespace photon::scenario {
 namespace {
@@ -44,18 +43,6 @@ float path_distance(const std::array<PathPoint,kPathPoints>& a,
 
 int bucket(float r) noexcept {
   return r > 0.25f ? 2 : (r < -0.25f ? 0 : 1);
-}
-
-void summarize_path(const HistoricalSample& s, Scenario& out) noexcept {
-  if (s.path_count == 0) return;
-  float peak = 0.0f;
-  float trough = 0.0f;
-  for (std::size_t i = 0; i < s.path_count; ++i) {
-    peak = std::max(peak, s.path[i].return_bps);
-    trough = std::min(trough, s.path[i].return_bps);
-  }
-  out.max_favorable_bps = peak;
-  out.max_adverse_bps = trough;
 }
 
 } // namespace
