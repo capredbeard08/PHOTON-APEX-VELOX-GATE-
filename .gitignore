@@ -1,0 +1,14 @@
+build/
+vivado_build/
+*.jou
+*.log
+*.str
+*.rpt
+compile_commands.json
+.cache/
+.idea/
+.vscode/
+.env
+*.key
+*.pem
+*.crt
