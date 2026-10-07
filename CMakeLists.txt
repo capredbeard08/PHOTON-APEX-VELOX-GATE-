@@ -11,6 +11,7 @@ add_library(photon_core STATIC
   src/avx512_signal_engine.cpp
   src/market_intelligence.cpp
   src/scenario_engine.cpp
+  sandbox/automated_research.cpp
 )
 target_include_directories(photon_core PUBLIC include)
 target_compile_options(photon_core PRIVATE -O3 -march=native)
