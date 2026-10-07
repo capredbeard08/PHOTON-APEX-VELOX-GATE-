@@ -1,0 +1,2 @@
+# /etc/default/grub example — review CPU topology before deployment.
+GRUB_CMDLINE_LINUX_DEFAULT="quiet isolcpus=2-15 nohz_full=2-15 rcu_nocbs=2-15 processor.max_cstate=0 idle=poll mce=off transparent_hugepage=never iommu=pt"
