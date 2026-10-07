@@ -38,3 +38,12 @@ Never commit API keys, broker credentials, certificates or private signing mater
 5. PTP/hardware timestamp calibration and latency histograms.
 6. FPGA TOE/risk timing closure at 322.265 MHz.
 7. CI, packet replay and hardware-in-the-loop verification.
+
+
+## Verification status
+
+The current C++ baseline is continuously built by GitHub Actions. The latest green run covers the OUCH fixed-message layout tests, AVX-512 compilation, hot-path benchmark target, feed A/B duplicate suppression, and Python latency-tool syntax.
+
+The OUCH encoder follows the current Nasdaq OUCH 5.0 Enter Order layout: a 47-byte fixed portion with the 8-byte Price field and optional appendages beginning at offset 47. Protocol changes introduced by Nasdaq after the published specification must be revalidated against the venue's current certification package before production use.
+
+Hardware claims remain targets until measured with the actual NIC/FPGA/server configuration. Production certification, venue connectivity, PTP synchronization, Solarflare hardware timestamping, FPGA timing closure, and end-to-end wire measurements are required before live trading.
