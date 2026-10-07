@@ -10,6 +10,7 @@ add_library(photon_core STATIC
   src/ouch5_gateway.cpp
   src/avx512_signal_engine.cpp
   src/market_intelligence.cpp
+  src/scenario_engine.cpp
 )
 target_include_directories(photon_core PUBLIC include)
 target_compile_options(photon_core PRIVATE -O3 -march=native)
@@ -32,3 +33,6 @@ target_link_libraries(photon_market_intelligence_test PRIVATE photon_core)
 enable_testing()
 add_test(NAME photon_smoke COMMAND photon_smoke)
 add_test(NAME photon_market_intelligence COMMAND photon_market_intelligence_test)
+add_executable(photon_scenario_test tests/test_scenario_engine.cpp)
+target_link_libraries(photon_scenario_test PRIVATE photon_core)
+add_test(NAME photon_scenario COMMAND photon_scenario_test)
