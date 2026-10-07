@@ -19,7 +19,7 @@ int main() {
   assert(buf[5] == std::byte{'B'});
   assert(buf[9] == std::byte{100});
   assert(buf[18] == std::byte{0});
-  assert(buf[25] == std::byte{18}); // 1,234,500 == 0x000000000012D644
+  assert(buf[25] == std::byte{68}); // low byte of 1,234,500 in big-endian form
   assert(buf[26] == std::byte{'0'});
   assert(buf[27] == std::byte{'Y'});
   assert(buf[28] == std::byte{'A'});
