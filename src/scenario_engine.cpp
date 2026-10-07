@@ -68,7 +68,7 @@ TimeframeResult ScenarioEngine::simulate(const intel::MarketSnapshot& now,std::u
   return out;
 }
 
-Consensus ScenarioEngine::cross_validate(const MarketSnapshot& now) const noexcept {
+Consensus ScenarioEngine::cross_validate(const intel::MarketSnapshot& now) const noexcept {
   Consensus c{};
   float votes[3]{}, probsum=0;
   for(std::size_t i=0;i<kTimeframes;++i) {
