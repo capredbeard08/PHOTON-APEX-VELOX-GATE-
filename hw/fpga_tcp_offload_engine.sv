@@ -100,7 +100,7 @@ module fpga_tcp_offload_engine #(
     tcp_sum += {16'h0000, seq_i[15:0]};
     tcp_sum += {16'h0000, ack_i[31:16]};
     tcp_sum += {16'h0000, ack_i[15:0]};
-    tcp_sum += 32'h5000_0000 | {24'h0, tcp_flags_i};
+    tcp_sum += 32'h0000_5000 | {24'h0, tcp_flags_i};
     tcp_sum += {16'h0000, window_i};
     tcp_sum += payload_checksum_i;
     tcp_checksum = ~fold16(tcp_sum);
